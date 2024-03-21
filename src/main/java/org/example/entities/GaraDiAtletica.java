@@ -2,6 +2,8 @@ package org.example.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,8 +11,12 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("gara_di_atletica") // <-- Cambia il valore della discriminator column
 public class GaraDiAtletica extends Evento {
+
+    @ManyToOne
     public Persona atleti;
 
+    @ManyToOne
+    @JoinColumn(name = "vincitore_id")
     public Persona vincitore;
 
 
